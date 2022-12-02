@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Document</title>
+
+    <style>
+      /*
+      Für die Hintergrundfarbe auf der Hauptseite würde ich vorschlagen
+      legst du eine CSS Variable an:
+       */
+      :root {
+        /*
+          In meinem Fall hier heißt die CSS Variable --color-background.
+          CSS Variablen fangen immer mit "--" an.
+       */
+        --color-background: #fff;
+      }
+
+      /*
+        Hier verwende ich dann die CSS Variable, um die Hintergrundfarbe
+        des body elements festzulegen.
+     */
+      body {
+        background-color: var(--color-background);
+        transition: background-color 750ms 0.5s ease;
+      }
+    </style>
+  </head>
+
+  <body>
+    <!-- Hier ist das iframe mit deinem Sketch :) -->
+    <iframe
+      frameborder="0"
+      src="https://mayaschormann.github.io/ZFB/"
+      width="700"
+      height="700"
+    ></iframe>
+  </body>
+
+  <script>
+    // Und hier wird dann der Javascript Code festgelegt,
+    // mit dem auf die Nachrichten aus der sw.js Funktion
+    // reagiert wird.
+    // siehe:
+    // https://github.com/mayaschormann/ZFB/blob/20fb41229633a795e7600da5f47a5977f54c59a6/functions/sw.js#L5
+    function listener(event) {
+      const info = event.data;
+      // event.data ist das, was wir in sw.js senden, also:
+      // var message = { type: "colorChange", value: colorValue };
+
+      // Hier prüfe ich dann, welchen Nachriten "type" wir empfangen, und ob es "colorChange" ist.
+      // Wäre nicht unbedingt nötig, so könntest du aber noch andere Nachrichtentypen
+      // aus dem iframe an die Hauptseite schicken.
+      if (info.type === "colorChange") {
+        // value ist dann der SW Wert aus dem Sketch bzw. aus sw.js
+        const c = info.value;
+        // Und hiermit kannst du die CSS Variable ändern
+        // In dem Fall setze ich die Farbe einfach per RGB auf
+        // den Wert, denn wir im sketch geschickt haben (also 0 oder 255)
+        // und zwar für R, G und B jeweils auf den gleichen Wert.
+        // Also schwarz oder weiß
+        document.documentElement.style.setProperty(
+          "--color-background",
+          `rgb(${c}, ${c}, ${c})`
+        );
+      }
+    }
+
+    // Hier wird die Funktion listener mit dem event listener
+    // "onmessage" auf dem window objekt der Hauptseite
+    // verknüpft.
+    window.onmessage = listener;
+  </script>
+</html>
