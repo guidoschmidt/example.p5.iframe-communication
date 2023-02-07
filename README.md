@@ -2,7 +2,8 @@
 > Short guide explaining how to send data from iframe p5 sketches to a host
 > webpage
 
-:point-right: [Blog Post](https://preview.guidoschmidt.cc/journal/iframe-p5/)
+👉🏻 [Blog Post](https://preview.guidoschmidt.cc/journal/iframe-p5/)
+👉🏻 [Live Example](https://guidoschmidt.github.io/example.p5.iframe-communication/)
 
 ### Getting Started
 This examples doesn't utilize a web bundler, check out branch [complex-vite+pnpm](https://github.com/guidoschmidt/example.p5.iframe-communication/tree/complex-vite+pnpm)
