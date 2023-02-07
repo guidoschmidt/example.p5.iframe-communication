@@ -1,0 +1,38 @@
+:root {
+  --color-background: rgb(255, 255, 255);
+  --color-text: rgb(0, 0, 0);
+  --shadow-color: rgba(0, 0, 0, 0.2);
+  --shadow-elevation-high: 0px 0.6px 0.7px hsl(var(--shadow-color) / 0.34),
+    0px 3.7px 4.2px -0.4px hsl(var(--shadow-color) / 0.34),
+    0px 6.9px 7.8px -0.7px hsl(var(--shadow-color) / 0.34),
+    0.1px 11.3px 12.7px -1.1px hsl(var(--shadow-color) / 0.34),
+    0.1px 18px 20.3px -1.4px hsl(var(--shadow-color) / 0.34),
+    0.2px 28.2px 31.7px -1.8px hsl(var(--shadow-color) / 0.34),
+    0.2px 42.8px 48.2px -2.1px hsl(var(--shadow-color) / 0.34),
+    0.4px 63.1px 71px -2.5px hsl(var(--shadow-color) / 0.34);
+}
+
+html, body {
+  touch-action: auto;
+}
+
+body {
+  align-items: center;
+  background: var(--color-background);
+  transition: background 1500ms ease;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  margin: 0;
+  min-height: 100vh;
+  padding: 0;
+  font-family: monospace;
+}
+
+h1 {
+  font-size: calc(20px + 1vw);
+}
+
+iframe {
+  box-shadow: var(--shadow-elevation-high);
+}
