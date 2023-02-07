@@ -5,20 +5,21 @@
 :point-right: [Blog Post](https://preview.guidoschmidt.cc/journal/iframe-p5/)
 
 ### Getting Started
-This examples uses [vite.js](https://vitejs.dev/). To get started, install
-needed dependencies and start vite:
+This examples doesn't utilize a web bundler, check out branch [complex-vite+pnpm](https://github.com/guidoschmidt/example.p5.iframe-communication/tree/complex-vite+pnpm)
+for a variation using [vite.js](https://vitejs.dev/) and [pnpm](https://pnpm.io/).
+
+To try this example, spin up a local webserver, e.g. using [npx](https://docs.npmjs.com/cli/v7/commands/npx)
 
 ```
-npm install
-npm run dev
+npx http-server -o
 ```
 
 ### Structure
 
-- `src/` holds the source code that embeds an external iframe and reacts on
-  messages sent from the iframes page via `Window.postMessage`
-- `public/extern/` holds the external p5 sketch files. This is basically the
-  webpage which will be linked via `iframe`. The `public/` folder acts as a
-  static files folder for vite.js. We can act as if it was hosted somewhere else
-  and referr to it via `/extern` on our local machine to simulate a scenario
-  where it's hosted somewhere else.
+- `index.html` is the main web page which includes a sketch via `iframe`
+- `index.js` is the main JavaScript file handling `Window.postMessage` from the
+  `iframe` and switching the background color via CSS variables
+- `index.css` is the stylesheet of the main pages. Defines the CSS variable
+  `--color-background` which is changed when receiving messages from the `iframe`
+- `extern/` holds the external p5 sketch files. This is basically the
+  webpage which will be linked via `iframe`
