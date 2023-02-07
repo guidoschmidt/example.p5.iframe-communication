@@ -2,7 +2,7 @@
 > Short guide explaining how to send data from iframe p5 sketches to a host
 > webpage
 
-:point-right: [Blog Post](https://preview.guidoschmidt.cc/journal/iframe-p5/)
+👉🏻 [Blog Post](https://preview.guidoschmidt.cc/journal/iframe-p5/)
 
 ### Getting Started
 This examples uses [vite.js](https://vitejs.dev/). To get started, install
